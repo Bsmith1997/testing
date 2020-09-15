@@ -1,0 +1,8 @@
+#!/bin/sh 
+
+msg = `grep -i 'stellar' $1`
+if [-z "{msg}"]; then
+	echo "Echo stellar commits are permitted!"
+	exit 1
+	fi
+	
