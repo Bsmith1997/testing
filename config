@@ -3,4 +3,4 @@
 	filemode = true
 	ignorecase = true
 	precomposeunicode = true
-
+	hookPath = $GIT_DIR/hooks
