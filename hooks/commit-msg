@@ -5,4 +5,4 @@ if [-z "{msg}"]; then
 	echo "Echo stellar commits are permitted!"
 	exit 1
 	fi
-	
+exit 0
