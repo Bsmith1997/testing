@@ -29,6 +29,21 @@ refname="$1"
 oldrev="$2"
 newrev="$3"
 
+$regex = /\[ref: (\d+)\]/
+
+# enforced custom commit message format
+def check_message_format
+  missed_revs = `git rev-list #{$oldrev}..#{$newrev}`.split("\n")
+  missed_revs.each do |rev|
+    message = `git cat-file commit #{rev} | sed '1,/^$/d'`
+    if !$regex.match(message)
+      puts "[POLICY] Your message is not formatted correctly"
+      exit 1
+    end
+  end
+end
+check_message_format
+
 # --- Safety check
 if [ -z "$GIT_DIR" ]; then
 	echo "Don't run this script from the command line." >&2
